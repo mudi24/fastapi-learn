@@ -1,0 +1,73 @@
+2025-02-26 11:01:49,633 - INFO - Started server process [44221]
+2025-02-26 11:01:49,633 - INFO - Waiting for application startup.
+2025-02-26 11:01:49,634 - INFO - Application startup complete.
+2025-02-26 11:01:56,200 - INFO - Shutting down
+2025-02-26 11:01:56,302 - INFO - Finished server process [44221]
+2025-02-26 11:01:56,306 - ERROR - Traceback (most recent call last):
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/site-packages/starlette/routing.py", line 686, in lifespan
+    await receive()
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/asyncio/queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+2025-02-26 11:01:58,341 - INFO - Started server process [44324]
+2025-02-26 11:01:58,341 - INFO - Waiting for application startup.
+2025-02-26 11:01:58,341 - INFO - Application startup complete.
+2025-02-26 11:26:32,540 - INFO - Shutting down
+2025-02-26 11:26:32,642 - INFO - Waiting for application shutdown.
+2025-02-26 11:26:32,642 - INFO - Application shutdown complete.
+2025-02-26 11:26:32,642 - INFO - Finished server process [44324]
+2025-02-26 11:26:33,206 - INFO - Started server process [53058]
+2025-02-26 11:26:33,206 - INFO - Waiting for application startup.
+2025-02-26 11:26:33,206 - INFO - Application startup complete.
+2025-02-26 11:26:40,682 - INFO - Shutting down
+2025-02-26 11:26:40,784 - INFO - Finished server process [53058]
+2025-02-26 11:26:40,786 - ERROR - Traceback (most recent call last):
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/site-packages/starlette/routing.py", line 686, in lifespan
+    await receive()
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/asyncio/queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+
+2025-02-26 11:26:42,506 - INFO - Started server process [53175]
+2025-02-26 11:26:42,506 - INFO - Waiting for application startup.
+2025-02-26 11:26:42,506 - INFO - Application startup complete.
+2025-02-26 11:27:16,152 - INFO - Shutting down
+2025-02-26 11:27:16,253 - INFO - Waiting for application shutdown.
+2025-02-26 11:27:16,253 - INFO - Application shutdown complete.
+2025-02-26 11:27:16,253 - INFO - Finished server process [53175]
+2025-02-26 11:27:16,712 - INFO - Started server process [53517]
+2025-02-26 11:27:16,712 - INFO - Waiting for application startup.
+2025-02-26 11:27:16,713 - INFO - Application startup complete.
+2025-02-26 11:27:21,362 - INFO - Shutting down
+2025-02-26 11:27:21,464 - INFO - Waiting for application shutdown.
+2025-02-26 11:27:21,466 - INFO - Application shutdown complete.
+2025-02-26 11:27:21,466 - INFO - Finished server process [53517]
+2025-02-26 11:27:21,910 - INFO - Started server process [53589]
+2025-02-26 11:27:21,910 - INFO - Waiting for application startup.
+2025-02-26 11:27:21,910 - INFO - Application startup complete.
+2025-02-26 11:29:39,159 - INFO - Shutting down
+2025-02-26 11:29:39,265 - INFO - Waiting for application shutdown.
+2025-02-26 11:29:39,265 - INFO - Application shutdown complete.
+2025-02-26 11:29:39,265 - INFO - Finished server process [53589]
+2025-02-26 11:29:39,765 - INFO - Started server process [55131]
+2025-02-26 11:29:39,765 - INFO - Waiting for application startup.
+2025-02-26 11:29:39,765 - INFO - Application startup complete.
+2025-02-26 11:29:45,624 - INFO - Shutting down
+2025-02-26 11:29:45,725 - INFO - Waiting for application shutdown.
+2025-02-26 11:29:45,727 - INFO - Application shutdown complete.
+2025-02-26 11:29:45,728 - INFO - Finished server process [55131]
+2025-02-26 11:29:46,138 - INFO - Started server process [55205]
+2025-02-26 11:29:46,138 - INFO - Waiting for application startup.
+2025-02-26 11:29:46,138 - INFO - Application startup complete.
+2025-02-26 11:29:48,564 - INFO - Shutting down
+2025-02-26 11:29:48,665 - INFO - Waiting for application shutdown.
+2025-02-26 11:29:48,666 - INFO - Application shutdown complete.
+2025-02-26 11:29:48,666 - INFO - Finished server process [55205]
+2025-02-26 11:29:49,117 - INFO - Started server process [55235]
+2025-02-26 11:29:49,117 - INFO - Waiting for application startup.
+2025-02-26 11:29:49,117 - INFO - Application startup complete.
