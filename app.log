@@ -71,3 +71,14 @@ asyncio.exceptions.CancelledError
 2025-02-26 11:29:49,117 - INFO - Started server process [55235]
 2025-02-26 11:29:49,117 - INFO - Waiting for application startup.
 2025-02-26 11:29:49,117 - INFO - Application startup complete.
+2025-02-26 21:31:43,007 - INFO - Shutting down
+2025-02-26 21:31:43,111 - INFO - Finished server process [55235]
+2025-02-26 21:31:43,117 - ERROR - Traceback (most recent call last):
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/site-packages/starlette/routing.py", line 686, in lifespan
+    await receive()
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/site-packages/uvicorn/lifespan/on.py", line 135, in receive
+    return await self.receive_queue.get()
+  File "/Users/kaiyao/.pyenv/versions/3.10.11/lib/python3.10/asyncio/queues.py", line 159, in get
+    await getter
+asyncio.exceptions.CancelledError
+

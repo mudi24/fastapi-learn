@@ -132,4 +132,157 @@ brew services stop redis
 ```bash
 deactivate
 ```
+
+## 部署指南
+
+### 1. 服务器准备
+1. 安装必要的系统包：
+```bash
+sudo apt update
+sudo apt install python3.9 python3.9-venv python3-pip redis-server nginx
+```
+
+2. 创建项目目录：
+```bash
+mkdir -p /var/www/fastapi-learn
+cd /var/www/fastapi-learn
+```
+
+### 2. 项目部署
+
+1. 克隆项目：
+```bash
+git clone <你的项目仓库URL> .
+```
+
+2. 创建虚拟环境：
+```bash
+python3.9 -m venv venv
+source venv/bin/activate
+```
+
+3. 安装依赖：
+```bash
+pip install -r requirements.txt
+pip install gunicorn
+```
+
+4. 创建系统服务配置文件：
+```bash
+sudo nano /etc/systemd/system/fastapi-learn.service
+```
+
+添加以下内容：
+```ini
+[Unit]
+Description=FastAPI Book Management System
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/fastapi-learn
+Environment="PATH=/var/www/fastapi-learn/venv/bin"
+ExecStart=/var/www/fastapi-learn/venv/bin/gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker -b unix:/tmp/fastapi-learn.sock
+
+[Install]
+WantedBy=multi-user.target
+```
+
+5. 配置 Nginx：
+```bash
+sudo nano /etc/nginx/sites-available/fastapi-learn
+```
+
+添加以下内容：
+```nginx
+server {
+    listen 80;
+    server_name your_domain.com;  # 替换为你的域名
+
+    location / {
+        proxy_pass http://unix:/tmp/fastapi-learn.sock;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+6. 启用网站配置：
+```bash
+sudo ln -s /etc/nginx/sites-available/fastapi-learn /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+### 3. 启动服务
+
+1. 启动 Redis：
+```bash
+sudo systemctl start redis
+sudo systemctl enable redis
+```
+
+2. 初始化数据库：
+```bash
+cd /var/www/fastapi-learn
+source venv/bin/activate
+python generate_data.py
+```
+
+3. 启动应用服务：
+```bash
+sudo systemctl start fastapi-learn
+sudo systemctl enable fastapi-learn
+```
+
+### 4. 维护命令
+
+- 查看应用日志：
+```bash
+sudo journalctl -u fastapi-learn
+```
+
+- 重启服务：
+```bash
+sudo systemctl restart fastapi-learn
+```
+
+- 查看服务状态：
+```bash
+sudo systemctl status fastapi-learn
+```
+
+### 5. 安全建议
+
+1. 配置防火墙只开放必要端口：
+```bash
+sudo ufw allow 80
+sudo ufw allow 443
+sudo ufw allow 22
+sudo ufw enable
+```
+
+2. 设置 SSL 证书（推荐使用 Let's Encrypt）：
+```bash
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d your_domain.com
+```
+
+3. 定期更新系统和依赖：
+```bash
+sudo apt update && sudo apt upgrade
+pip install --upgrade -r requirements.txt
+```
+
+### 6. 注意事项
+
+1. 确保服务器防火墙配置正确
+2. 定期备份数据库文件
+3. 监控服务器资源使用情况
+4. 配置日志轮转防止日志文件过大
+5. 根据实际需求调整 Gunicorn 工作进程数
 ```
